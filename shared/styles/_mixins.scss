@@ -1,0 +1,26 @@
+/**
+ * Clearfix helper to ensure containers are large enough
+ * to wrap their - possibly floated - children.
+ */
+@mixin clearfix {
+  &:before {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+/**
+ * A wrapper of a container.
+ */
+
+@mixin wrapper {
+  @include clearfix();
+  margin: 0 auto;
+  padding: 0 1em;
+  text-align: center;
+}

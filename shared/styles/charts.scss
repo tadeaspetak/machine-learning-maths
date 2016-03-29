@@ -1,0 +1,52 @@
+.chart,
+.chart-cost {
+  //axes
+  .axis line,
+  .axis path {
+    fill: none;
+    stroke: gray;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+  }
+  //curves
+  path.line {
+    fill: none;
+    //function curve
+    &.function {
+      stroke: #00ab6b;
+      stroke-width: 2;
+    }
+    //tangent
+    &.tangent {
+      stroke-width: 2;
+      stroke: red;
+      stroke-dasharray: 5,5;
+    }
+  }
+
+  .point {
+    //sample data points
+    .sample{
+      fill: #f50000;
+    }
+
+    //cost points
+    .cost{
+      fill: #00f500;
+    }
+  }
+
+  //helper lines
+  line.helper {
+    stroke: steelblue;
+    stroke-width: 1;
+    fill: none;
+    stroke-dasharray: 5,5;
+  }
+
+  //TODO: costs
+  .line.distance {
+    stroke: red;
+    stroke-width: 1;
+  }
+}
