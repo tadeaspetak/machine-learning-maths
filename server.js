@@ -13,6 +13,9 @@ import fs from 'fs';
 
 const app = express();
 
+//make sure the path to EVERYTHING is corrrect
+process.chdir(__dirname);
+
 // load `dev` configuration if we are not in the production environment (TODO: try removing the `default` bit below)
 if (process.env.NODE_ENV === 'production') {
   console.log("PRODUCTION!");

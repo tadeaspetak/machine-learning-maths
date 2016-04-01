@@ -12,34 +12,48 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
  */
 
 export default function(app) {
-  const config = assign(productionConfiguration, {
-    //add SourceMap as DataUrl to the JavaScript file
-    devtool: 'inline-source-map',
-    entry: [
-      //allow hot swapping
-      'webpack-hot-middleware/client',
-      path.resolve(__dirname, './client')
-    ],
-    plugins: [
-      //all the following three plugins are required by the webpackHotMiddleware middleware
-      //assign the module and chunk ids by occurrence count -> ids that are used often get lower (shorter) ids
-      new webpack.optimize.OccurrenceOrderPlugin(),
-      //hot reload plugin
-      new webpack.HotModuleReplacementPlugin(),
-      //do not exit with a fail code on encountering an error during compilation; skip emitting phase instead
-      new webpack.NoErrorsPlugin(),
+  const config = productionConfiguration;
 
-      //combine all the .css and .sass files into `screen.css`
-      new ExtractTextPlugin("screen.css"),
-      //set the BROWSER variable to true (useful for determining context in the shared code base)
-      new webpack.DefinePlugin({
-        "process.env": {
-            BROWSER: JSON.stringify(true)
-        }
-      })
-    ],
-  });
+  //add SourceMap as DataUrl to the JavaScript file
+  config.devtool = 'inline-source-map';
+  //allow hot swapping
+  config.entry.unshift('webpack-hot-middleware/client');
 
+  //configure the `react transform` plugin
+  config.module.loaders[0].query.plugins.push(
+    ['transform-object-rest-spread'],
+    ['transform-class-properties'],
+    ['transform-decorators-legacy'],
+    ['react-transform', {
+        transforms: [{
+          transform: 'react-transform-hmr',
+          imports: ['react'],
+          locals: ['module']
+        }]
+      }
+    ]
+  );
+
+  //augment the plugin array
+  config.plugins.unshift(
+    //all the following three plugins are required by the webpackHotMiddleware middleware
+    //assign the module and chunk ids by occurrence count -> ids that are used often get lower (shorter) ids
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    //hot reload plugin
+    new webpack.HotModuleReplacementPlugin(),
+    //do not exit with a fail code on encountering an error during compilation; skip emitting phase instead
+    new webpack.NoErrorsPlugin(),
+
+    //set the BROWSER variable to true (useful for determining context in the shared code base)
+    new webpack.DefinePlugin({
+      "process.env": {
+          BROWSER: JSON.stringify(true)
+      }
+    })
+  );
+  console.log(config.module.loaders[0].query.plugins);
+
+  //"load" the configuration
   const compiler = webpack(config);
 
   //serve the files emitted from webpack over a connect server (nothing is written to the disk)

@@ -24,57 +24,43 @@ var config = {
     //module directories (not necessary to pass full paths as webpack looks in `./`,`../`, `../../`, etc.)
     modulesDirectories: ['node_modules', 'shared'],
     //extensions that should be used to resolve modules
-    extensions: ['','.js', '.jsx']
+    extensions: ['', '.js', '.jsx']
   },
   module: {
-    loaders: [
-      {
+    loaders: [{
         //.jsx file loader -> es2015 and react babel extensions (make sure to also include the same config in the `.babelrc` file)
         test: /.jsx?$/,
         loader: 'babel',
         exclude: /node_modules/,
         query: {
           presets: ['react', 'es2015'],
-          plugins: [
-            ['transform-object-rest-spread'],
-            ['transform-class-properties'],
-            ['transform-decorators-legacy'],
-            [
-              'react-transform', {
-                transforms: [{
-                  transform: 'react-transform-hmr',
-                  imports: ['react'],
-                  locals: ['module']
-                }]
-              }
-            ]
-          ]
+          plugins: []
         }
       }, {
         //SASS
-        test: /\.scss$/,
+        test: /\.(s)?css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader")
-      },{
+      }, {
         //all images into the `img` folder
         test: /\.(jpg|jpeg|gif|png|ico)$/,
         exclude: /node_modules/,
-        loader:'file-loader?name=img/[name].[ext]'
+        loader: 'file-loader?name=img/[name].[ext]'
       },
       //all data files into the `data` folder
       {
         test: /\.(csv|tsv)$/,
         exclude: /node_modules/,
-        loader:'file-loader?name=data/[name].[ext]&context=./app/images'
+        loader: 'file-loader?name=data/[name].[ext]&context=./app/images'
       },
-      //all fonts (the url-loader uses DataUrls, the file-loader emits files)
+      //load fonts (note the `version` part after the suffix, very important)
       {
-        //load fonts
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=10000&mimetype=application/font-woff"
-      }, {
-        //save fonts into the `font` folder
+        loader: "url-loader?limit=10000&minetype=application/font-woff"
+      },
+      //emit files
+      {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader?name=font/[name].[ext]"
+        loader: "file-loader"
       }
     ],
     //skip parsing vendor files to optimize workflow (TODO)

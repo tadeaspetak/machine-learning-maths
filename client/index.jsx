@@ -9,7 +9,10 @@ import routes from 'routes';
 
 //styles (make sure we are in the browser before requiring these, otherwise, there shall be errors!)
 if(process.env.BROWSER){
-  require("font-awesome-sass-loader");
+  //require fonts
+  require('font-awesome/css/font-awesome.css');
+
+  //require styles
   require('../shared/styles/screen.scss');
   require('../shared/styles/charts.scss');
 

@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --progress --color -p --config webpack.config.js",
-    "deva": "webpack-dev-server --devtool eval --progress --colors --inline --history-api-fallback --content-base build",
-    "dev": "NODE_PATH=$NODE_PATH:./shared node --harmony ."
+    "dev": "NODE_PATH=$NODE_PATH:./shared node --harmony .",
+    "prod": "NODE_ENV=production NODE_PATH=$NODE_PATH:./shared node --harmony .",
+    "deprecated": "webpack-dev-server --devtool eval --progress --colors --inline --history-api-fallback --content-base build"
   },
   "author": "Tadeas Petak <tadeaspetak@gmail.com>",
   "license": "ISC",
@@ -26,7 +27,6 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "font-awesome": "^4.5.0",
-    "font-awesome-sass-loader": "^1.0.1",
     "history": "^2.0.0",
     "katex": "^0.5.1",
     "node-sass": "^3.4.2",
