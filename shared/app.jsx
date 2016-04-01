@@ -29,6 +29,8 @@ export default class App extends React.Component {
               <footer>
                 <p>Created by <a href="mailto:tadeaspetak@gmail.com">Tadeáš Peták</a> as a demo for a short competence
                   day talk at <a href="http://jayway.com" target="_bank">Jayway</a> in March 2016.</p>
+
+                <p><i className="fa fa-github"></i> Check out the source on <a href="https://github.com/tadeaspetak/machine-learning-maths" target="_blank">GitHub</a>.</p>
               </footer>
             </div>
           <main><div className="content-wrapper">{this.props.children}</div></main>
