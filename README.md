@@ -3,7 +3,7 @@
 Hosted at [machinelearning.tadeaspetak.net](http://machinelearning.tadeaspetak.net).
 
 This is a short visualization demo of the most basic mathematical
-principles behind machine learning. I wrote it tu support my 15-minute
+principles behind machine learning. I wrote it to support my 15-minute
 talk during a *competence day* at [Jayway](http://jayway.com) in March, 2016.
 While it's not the most organised demo in the world, not to mention it's not
 even close to being responsive or anything like that, it fulfills its purpose:
