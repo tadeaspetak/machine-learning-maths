@@ -49,7 +49,7 @@ export default class Derivative extends React.Component {
         I.e. how quickly the output increases or decreases when we increase or decrease the argument(s).
         In layman terms, it is the slope of the tangent to the function curve at a specific point.</p>
 
-      <p>Play around with the chart below until you feel you undestand what is going on without reservations.
+      <p>Play around with the chart below until you feel you understand what is going on without reservations.
         Try changing the parameters and the function type, watch the curve reflect these adjustments, and see how the derivative
         changes as the <strong><em>x</em></strong> increases: staying constant for linear functions, rising for quadratic,
         decreasing for the square root.</p>
