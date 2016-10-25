@@ -7,7 +7,7 @@ delete process.env.BROWSER;
 
 //start up the server
 var server = require('./server').default;
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3010;
 server.listen(port, function () {
   console.log(`Server listening on: ${port}.`);
 });
