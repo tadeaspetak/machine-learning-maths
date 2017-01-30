@@ -1,6 +1,6 @@
 # Basic mathematical principles behind machine learning
 
-Hosted at [machinelearning.tadeaspetak.net](http://machinelearning.tadeaspetak.net).
+Hosted at [machinelearning.tadeaspetak.com](http://machinelearning.tadeaspetak.com).
 
 This is a short visualization demo of the most basic mathematical
 principles behind machine learning. I wrote it to support my 15-minute
